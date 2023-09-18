@@ -1,12 +1,12 @@
-#0x16. C - Simple Shell
+# 0x16. C - Simple Shell
 
 Write a simple UNIX command interpreter.
 
-##0. Betty would be proud
+## 0. Betty would be proud
 
 Write  beautiful code that passes the betty checks
 
-##1. Simple shell 0.1
+## 1. Simple shell 0.1
 
 Write a UNIX command line interpreter
 
