@@ -27,5 +27,5 @@ char *_strdup(char *str);
 
 /**tools1.c**/
 int prompt(const char *prompt, unsigned int size);
-
+i
 #endif
