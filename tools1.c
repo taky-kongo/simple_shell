@@ -75,3 +75,18 @@ int is_exist_file(char *path)
 	}
 	return (-1);
 }
+
+/**
+ * last_free - Free the memory for the last execution
+ * @buffer: the buffer
+ */
+void last_free(char *buffer)
+{
+	if (isatty(STDIN_FILENO))
+	{
+		_putchar('\n');
+		free(buffer);
+	}
+	if (!isatty(STDIN_FILENO))
+		free(buffer);
+}
