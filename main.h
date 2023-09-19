@@ -29,5 +29,6 @@ char *_strdup(char *str);
 int prompt(const char *prompt, unsigned int size);
 int _strlen(char *str);
 void free_grid(char **grid, int heigth);
+int is_exist_file(char *path);
 
 #endif
