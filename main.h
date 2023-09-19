@@ -30,5 +30,6 @@ int prompt(const char *prompt, unsigned int size);
 int _strlen(char *str);
 void free_grid(char **grid, int heigth);
 int is_exist_file(char *path);
+void last_free(char *buffer);
 
 #endif
