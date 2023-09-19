@@ -56,3 +56,22 @@ void free_grid(char **grid, int heigth)
 		i++;
 	}
 }
+
+/**
+ * is_exist_file - Verify if a file exist
+ * @path: path to the file
+ *
+ * Return: 0 if the file exist or -1 if not
+ */
+int is_exist_file(char *path)
+{
+	int status;
+
+	status = (open(path, O_RDONLY));
+	if (status != -1)
+	{
+		close(status);
+		return (0);
+	}
+	return (-1);
+}
