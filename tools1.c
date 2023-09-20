@@ -11,7 +11,7 @@ int prompt(const char *prompt, unsigned int size)
 {
 	int written;
 
-	if (isatty(STDIN_FILEINO))
+	if (isatty(STDIN_FILENO))
 	{
 		written = write(1, prompt, size);
 		if (written == -1)
