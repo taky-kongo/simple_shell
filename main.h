@@ -32,4 +32,7 @@ void free_grid(char **grid, int heigth);
 int is_exist_file(char *path);
 void last_free(char *buffer);
 
+/**functions.c**/
+char *_strtok(char *str, const char *separator);
+
 #endif
