@@ -36,6 +36,6 @@ void last_free(char *buffer);
 char *_strtok(char *str, const char *separator);
 int fill_args(char *input, char **args_list);
 int spawnChild(char **args_list);
-
+int handleBuitlin(char **args, int status);
 
 #endif
