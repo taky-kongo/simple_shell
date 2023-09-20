@@ -39,4 +39,8 @@ int spawnChild(char **args_list);
 int handleBuitlin(char **args, int status);
 int change_dir(const char *path);
 
+/**functions1.c**/
+char *_getenv(char *env_var);
+
+
 #endif
