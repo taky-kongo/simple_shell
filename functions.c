@@ -60,3 +60,37 @@ int fill_args(char *input, char **args_list)
 	args_list[i] = NULL;
 	return (i);
 }
+
+/**
+ * spawnChild - Create a child process and exec command inside
+ * @args_list: the arguments list
+ *
+ * Return: a child of main process id
+ */
+int spawnChild(char **args_list)
+{
+	pid_t ch_pid;
+	int status, exit_status;
+
+	ch_pid = fork();
+	if (ch_pid == -1)
+	{
+		_puts("Error\n");
+	}
+	else if (ch_pid == 0)
+	{
+		if (execve(args_list[0], args_list, NULL) == (-1))
+		{
+			exit_status = -1;
+			perror("hsh");
+			exit(exit_status);
+		}
+		exit(0);
+	}
+	else
+	{
+		wait(&status);
+	}
+	exit_status = WEXITSTATUS(status);
+	return (exit_status);
+}
