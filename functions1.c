@@ -34,3 +34,20 @@ char *_getenv(char *env_var)
 	}
 	return (NULL);
 }
+
+/**
+ * cmd_not_found - print no found if not command
+ * @args: an array of args
+ * @counter: Times that the shell has been executed
+ *
+ * Return: Exit status
+ */
+int cmd_not_found(char **args, int counter)
+{
+	if (isatty(STDIN_FILENO))
+		_puts("hsh");
+	else
+		_puts("./hsh");
+	printf(": %d: %s: not found\n", counter, args[0]);
+	return (-1);
+}
