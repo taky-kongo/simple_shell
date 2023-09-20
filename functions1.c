@@ -53,6 +53,43 @@ int cmd_not_found(char **args, int counter)
 }
 
 /**
+ * concat_cmd - Concattenates an input with paths in global variable PATH
+ * @dir_path: directory string to be append with the command
+ * @cmd: command to be concatenated with the directory
+ *
+ * Return: Buffer to concatenated path
+ */
+char *concat_cmd(char *dir_path, char *cmd)
+{
+	int a, b = 0, len1, len2;
+	char *cmd_path = NULL;
+
+	if (dir_path == NULL || cmd == NULL)
+		return (NULL);
+	len1 = _strlen(dir_path);
+	len2 = _strlen(cmd);
+	cmd_path = malloc(len1 + len2 + 2);
+	if (cmd_path == NULL)
+		return (NULL);
+	for (a = 0; dir_path[a] != '\0'; a++)
+	{
+		cmd_path[a] = dir_path[a];
+	}
+	if (dir_path[a - 1] != '/')
+	{
+		cmd_path[a] = '/';
+		a++;
+	}
+	while (cmd[b] != '\0')
+	{
+		cmd_path[a + b] = cmd[b];
+		b++;
+	}
+	cmd_path[a + b] = '\0';
+	return (cmd_path);
+}
+
+/**
  * handle_path - Verify if the first command can be executed
  * @args: Array of entries by the user
  *
