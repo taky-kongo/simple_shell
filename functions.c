@@ -94,3 +94,23 @@ int spawnChild(char **args_list)
 	exit_status = WEXITSTATUS(status);
 	return (exit_status);
 }
+
+/**
+ * change_dir - a function that changes working directory
+ * @path: the working directory
+ *
+ * Return: 0 on success, 98 on failure
+ */
+int change_dir(const char *path)
+{
+	char *buffer = NULL;
+
+	if (path == NULL)
+		path = getcwd(buffer, BUFFER_LEN);
+	if (chdir(path) == -1)
+	{
+		perror(path);
+		return (98);
+	}
+	return (0);
+}
