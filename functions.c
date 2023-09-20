@@ -114,3 +114,54 @@ int change_dir(const char *path)
 	}
 	return (0);
 }
+
+/**
+ * handleBuitlin - a function that handle a built-in command
+ * @args: the list of args
+ * @status: the exit status
+ *
+ * Return: an integer
+ */
+int handleBuitlin(char **args, int status)
+{
+	char *argv[3] = {"exit", "cd", "env"};
+	int i = 0, length = 0, length1 = 0;
+	char *program = args[0];
+
+	length = sizeof(argv) / sizeof(argv[0]);
+	while (args[++length1] != NULL)
+	while (i < length)
+	{
+		if (_strcmp(program, argv[i]) == 0)
+			break;
+		i++;
+	}
+	if (i == length)
+		return (-1);
+	if (_strcmp(argv[i], "exit") == 0)
+	{
+		if (length1 == 2)
+		{
+			status = atoi(args[1]), free(program);
+		}
+		free(program);
+		exit(status);
+	}
+	if (_strcmp(argv[i], "env") == 0)
+	{
+		if (environ == NULL)
+			return (0);
+		_puts(*environ);
+	}
+	if (_strcmp(argv[i], "cd") == 0)
+	{
+		printf("length : %d", length1);
+		if (length1 == 2)
+			change_dir(args[1]), free(program);
+		else if (length1 > 2)
+			perror("cd"), free(program);
+		else
+			change_dir(_getenv("HOME")), free(program);
+	}
+	return (0);
+}
