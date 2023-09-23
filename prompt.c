@@ -2,8 +2,7 @@
 
 /**
  * main - A terminal prompt similator
- *
- * Return: exit status
+ * Return: Exit status
  */
 int main(void)
 {
@@ -29,7 +28,7 @@ int main(void)
 						o_status = spawnChild(args), free(buffer), free(*args);
 					else
 					{
-					bt_status = handleBuitlin(args, o_status);
+					bt_status = handleBuiltin(args, o_status);
 					if (bt_status != 0)
 						o_status = cmd_not_found(args, count), free(buffer);
 					}
