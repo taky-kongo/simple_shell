@@ -1,48 +1,11 @@
 #include "main.h"
-
-/**
- * _strtok - Function that splits the string in tokens
- * @str: a string to be splitted
- * @separator: char separator
- *
- * Return: a token
- */
-char *_strtok(char *str, const char *separator)
-{
-	static char *a;
-	char *token = NULL;
-
-	if (!str)
-	{
-		str = a;
-		if (!str)
-			return (NULL);
-	}
-	str += strspn(str, separator);
-	if (!*str)
-	{
-		a = NULL;
-		return (NULL);
-	}
-	token = str;
-	str = strpbrk(token, separator);
-	if (str)
-	{
-		*str = '\0';
-		a = str + 1;
-	}
-	else
-		a = NULL;
-	return (token);
-}
-
 /**
  * fill_args - Fill an args_list with every input typed by the user
  * @input: String with the input
  * @args_list: args_list to be filled
- *
  * Return: Length of the args_list
  */
+
 int fill_args(char *input, char **args_list)
 {
 	int i = 0;
@@ -62,9 +25,8 @@ int fill_args(char *input, char **args_list)
 }
 
 /**
- * spawnChild - Create a child process and exec command inside
+ * spawnChild - create a child process and exec command inside
  * @args_list: the arguments list
- *
  * Return: a child of main process id
  */
 int spawnChild(char **args_list)
@@ -96,33 +58,12 @@ int spawnChild(char **args_list)
 }
 
 /**
- * change_dir - a function that changes working directory
- * @path: the working directory
- *
- * Return: 0 on success, 98 on failure
- */
-int change_dir(const char *path)
-{
-	char *buffer = NULL;
-
-	if (path == NULL)
-		path = getcwd(buffer, BUFFER_LEN);
-	if (chdir(path) == -1)
-	{
-		perror(path);
-		return (98);
-	}
-	return (0);
-}
-
-/**
- * handleBuitlin - a function that handle a built-in command
+ * handleBuiltin - a function that handle a built-in command
  * @args: the list of args
- * @status: the exit status
- *
+ * @status: the exit stats
  * Return: an integer
  */
-int handleBuitlin(char **args, int status)
+int handleBuiltin(char **args, int status)
 {
 	char *argv[3] = {"exit", "cd", "env"};
 	int i = 0, length = 0, length1 = 0;
@@ -164,4 +105,58 @@ int handleBuitlin(char **args, int status)
 			change_dir(_getenv("HOME")), free(program);
 	}
 	return (0);
+}
+
+/**
+  * change_dir - a function that changes working directory.
+  * @path: the working directory.
+  * Return: 0 on success, 98 on failure.
+  */
+int change_dir(const char *path)
+{
+	char *buffer = NULL;
+
+	if (path == NULL)
+		path = getcwd(buffer, BUFFER_LEN);
+	if (chdir(path) == -1)
+	{
+		perror(path);
+		return (98);
+	}
+	return (0);
+}
+
+/**
+ * _strtok - Function that splits the string in tokens
+ * @str: a string to be splitted
+ * @separator: char separator
+ * Return: a token
+ */
+char *_strtok(char *str, const char *separator)
+{
+	static char *a;
+	char *token = NULL;
+
+	if (!str)
+	{
+		str = a;
+		if (!str)
+			return (NULL);
+	}
+	str += strspn(str, separator);
+	if (!*str)
+	{
+		a = NULL;
+		return (NULL);
+	}
+	token = str;
+	str = strpbrk(token, separator);
+	if (str)
+	{
+		*str = '\0';
+		a = str + 1;
+	}
+	else
+		a = NULL;
+	return (token);
 }
