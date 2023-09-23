@@ -3,8 +3,7 @@
 /**
  * prompt - Prints the prompt in the standar input
  * @prompt: Pointer to the string to be printed
- * @size: Length of the prompt
- *
+ * @size: Length ot the prompt
  * Return: 0 if success or -1 if fails
  */
 int prompt(const char *prompt, unsigned int size)
@@ -23,9 +22,9 @@ int prompt(const char *prompt, unsigned int size)
 /**
  * _strlen - Sizes the length of a string
  * @str: String to be sized
- *
- * Return: The length of the string
+ * Return: The length ot the string
  */
+
 int _strlen(char *str)
 {
 	int length = 0;
@@ -39,16 +38,19 @@ int _strlen(char *str)
 }
 
 /**
- * free_grid - free the allocated memory
- * @grid: pointer to grid
- * @heigth: Heigth of the grid
+ *free_grid - Free the allocated memory
+ *@grid: pointer to grid
+ *@heigth: Heigth of the grid
  */
+
 void free_grid(char **grid, int heigth)
 {
 	int i = 0;
 
 	if (grid == NULL)
+	{
 		return;
+	}
 
 	while (i < heigth)
 	{
@@ -58,9 +60,8 @@ void free_grid(char **grid, int heigth)
 }
 
 /**
- * is_exist_file - Verify if a file exist
+ * is_exist_file - verify if a file exist
  * @path: path to the file
- *
  * Return: 0 if the file exist or -1 if not
  */
 int is_exist_file(char *path)
